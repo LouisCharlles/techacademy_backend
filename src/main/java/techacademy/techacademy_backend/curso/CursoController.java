@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class CursoController {
 
     @Autowired
-    private CursoRepository cursoRepository;
-
-    @Autowired
     private  CursoService cursoService;
 
     @GetMapping("/{curso_id}")

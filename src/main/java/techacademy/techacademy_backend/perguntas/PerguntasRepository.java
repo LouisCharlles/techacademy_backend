@@ -6,6 +6,6 @@ import techacademy.techacademy_backend.curso.Curso;
 
 import java.util.List;
 @Repository
-public interface PerguntasRepository extends JpaRepository<Perguntas,Integer> {
-    List<Perguntas> findByCurso(Curso curso);
+public interface PerguntasRepository extends JpaRepository<Pergunta,Integer> {
+    List<Pergunta> findByCurso(Curso curso);
 }

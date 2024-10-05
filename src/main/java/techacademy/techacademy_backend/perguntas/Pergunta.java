@@ -16,7 +16,7 @@ import techacademy.techacademy_backend.curso.Curso;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Perguntas {
+public class Pergunta {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id_perguntas;
@@ -36,8 +36,6 @@ public class Perguntas {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_curso",nullable = false)
-//    @ManyToOne
-//    @JoinColumn(name = "id_curso")
     @JsonBackReference
     private Curso curso;
 

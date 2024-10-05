@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import techacademy.techacademy_backend.perguntas.Perguntas;
+import techacademy.techacademy_backend.perguntas.Pergunta;
 
 
 import java.util.List;
@@ -30,9 +30,8 @@ public class Curso {
     private String videoLink;
 
     @OneToMany(mappedBy = "perguntasCurso",cascade = CascadeType.ALL)
-//    @OneToMany(mappedBy = "curso")
     @JsonManagedReference
-    private List<Perguntas> perguntas;
+    private List<Pergunta> perguntas;
 
     @JoinColumn(name = "id_perguntas",foreignKey = @ForeignKey(name = "fk_pergunta"))
     private Integer id_perguntas;
