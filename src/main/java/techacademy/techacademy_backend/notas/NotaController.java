@@ -1,13 +1,11 @@
 package techacademy.techacademy_backend.notas;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cursos-avaliar")
+@CrossOrigin(origins = "*")
 public class NotaController {
 
     @Autowired
@@ -16,6 +14,6 @@ public class NotaController {
 
     @PostMapping("/avaliacoes")
     public Nota salvarNota(@RequestBody NotaRequestPayload payload) throws Exception {
-        return notaService.salvarNota(payload.id_curso(), payload.id_usuario(), payload.nota());
+        return notaService.salvarNota(payload.email(), payload.id_curso(), payload.nota());
     }
 }

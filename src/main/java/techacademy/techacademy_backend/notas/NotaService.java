@@ -22,20 +22,19 @@ public class NotaService {
     @Autowired
     private UserRepository userRepository;
 
-    public Nota salvarNota(Integer id_usuario, Integer id_curso, Double nota) throws Exception {
+    public Nota salvarNota(String email, Integer id_curso, Double nota) throws Exception {
 
         Optional<Curso> cursoOpt = cursoRepository.findById(id_curso);
-        Optional<Usuario> usuarioOpt = userRepository.findById(id_usuario);
+        Optional<Usuario> usuarioOpt = userRepository.findByEmail(email);
 
         if (cursoOpt.isEmpty()) {
             throw new Exception("Curso não encontrado com id: " + id_curso);
         }
 
         if (usuarioOpt.isEmpty()) {
-            throw new Exception("Usuário não encontrado com id: " + id_usuario);
+            throw new Exception("Usuário não encontrado com email: " + email);
         }
 
-        // Cria e salva a entidade de Nota
         Nota notaEntity = new Nota();
         notaEntity.setCurso(cursoOpt.get());
         notaEntity.setUsuario(usuarioOpt.get());
