@@ -33,4 +33,9 @@ public class Usuario {
         this.senha = payload.senha();
     }
 
+    public Usuario withoutPassword() {
+        this.senha = null;
+        return this;
+    }
+
 }

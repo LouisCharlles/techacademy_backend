@@ -24,4 +24,26 @@ public class UsuarioController {
     public ResponseEntity<Usuario> getUserDetails(@PathVariable Integer usuario_id){
         return usuarioService.getUserDetails(usuario_id);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UserLoginPayload payload) {
+        return usuarioService.login(payload);
+    }
+
+    @GetMapping("/profile")
+    public ResponseEntity<Usuario> getProfile(@RequestHeader(value = "Authorization", required = false) String token) {
+
+        System.out.println(token.substring(7));
+
+        if (token == null || token.isEmpty()) {
+            return ResponseEntity.status(401).build();
+        }
+
+
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+
+        return usuarioService.getProfile(token);
+    }
 }
